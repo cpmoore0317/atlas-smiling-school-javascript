@@ -1,6 +1,7 @@
 $(document).ready(function () {
   // Function to append a new quote element
   function appendQuoteElement(picUrl, name, title, text, index) {
+    // Appending the HTML structure for the quote element to the carousel-inner div
     $(".section-quote .carousel-inner").append(`
           <div class="carousel-item ${index == 0 ? "active" : ""}">
               <div class="row justify-content-between">
@@ -29,6 +30,7 @@ $(document).ready(function () {
     index,
     selector
   ) {
+    // Appending the HTML structure for the card element to the specified selector
     $(selector).append(`
           <div class="carousel-item ${
             index == 0 ? "active" : ""
