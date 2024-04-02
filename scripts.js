@@ -118,17 +118,22 @@ $(document).ready(function () {
 
   // Function to display the quotes
   function displayQuotes() {
+    // Show loader while fetching quotes
     toggleLoader(true, ".section-quote .carousel-inner");
+    // Fetch quotes data from the API
     $.get("https://smileschool-api.hbtn.info/quotes", function (data) {
+      // Iterate through each quote in the data
       data.forEach((quote, index) => {
+        // Append each quote element to the carousel
         appendQuoteElement(
-          quote.pic_url,
-          quote.name,
-          quote.title,
-          quote.text,
-          index
+          quote.pic_url,   // URL of the person's picture
+          quote.name,      // Name of the person
+          quote.title,     // Title of the person
+          quote.text,      // Quote text
+          index            // Index used for setting active class for the first quote
         );
       });
+      // Hide loader once quotes are fetched and displayed
       toggleLoader(false, ".section-quote .carousel-inner");
     });
   }
