@@ -98,14 +98,21 @@ $(document).ready(function () {
 
   // Function to generate the star rating
   function generateStarRating(stars) {
+    // Initialize an empty string to store the HTML for stars
     let starHtml = "";
+    // Ensure stars do not exceed 5
     stars = Math.min(stars, 5);
+    // Loop to generate filled stars
     for (let i = 0; i < stars; i++) {
+      //Adding HTML for a filled star
       starHtml += `<img src="./images/star_on.png" alt="star on" width="15px">\n`;
     }
+    // Loop to generate empty stars (if any)
     for (let i = 0; i < 5 - stars; i++) {
+      // Adding HTML for an empty star
       starHtml += `<img src="./images/star_off.png" alt="star off" width="15px">\n`;
     }
+    // Return the generated HTML for star rating
     return starHtml;
   }
 
