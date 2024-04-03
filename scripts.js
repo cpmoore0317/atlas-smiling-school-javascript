@@ -315,20 +315,27 @@ $(document).ready(function () {
     }
   }
 
-  // Initialize event listeners
+  // Initialize event listener for carouselVideos slide
   $("#carouselVideos").on("slide.bs.carousel", function (e) {
+    // Call handleCarouselSlide function passing the event and selector for carouselVideos
     handleCarouselSlide(e, "#carouselVideos");
   });
 
+  // Initialize event listener for carouselLatestVideos slide
   $("#carouselLatestVideos").on("slide.bs.carousel", function (e) {
+    // Call handleCarouselSlide function passing the event and selector for carouselLatestVideos
     handleCarouselSlide(e, "#carouselLatestVideos");
   });
 
+  // Check if there is a section with class "section-quote" exists
   if ($(".section-quote").length > 0) {
+    // If exists, call displayQuotes function to fetch and display quotes
     displayQuotes();
   }
 
+  // Check if there is an element with id "carouselVideos"
   if ($("#carouselVideos").length > 0) {
+    // If exists, call displayCarouselVideos function to fetch and display popular tutorial videos
     displayCarouselVideos(
       "#carouselVideos",
       "https://smileschool-api.hbtn.info/popular-tutorials",
@@ -336,7 +343,9 @@ $(document).ready(function () {
     );
   }
 
+  // Check if there is an element with id "carouselLatestVideos"
   if ($("#carouselLatestVideos").length > 0) {
+    // If exists, call displayCarouselVideos function to fetch and display latest videos
     displayCarouselVideos(
       "#carouselLatestVideos",
       "https://smileschool-api.hbtn.info/latest-videos",
@@ -344,7 +353,9 @@ $(document).ready(function () {
     );
   }
 
+  // Check if there is a section with class "section-result" exists
   if ($(".section-result").length > 0) {
+    // If exists, populate search filters and display courses
     populateSearchFilters();
     displayCourses();
   }
