@@ -245,27 +245,36 @@ $(document).ready(function () {
 
   // Function to display the courses
   function displayCourses(search = "", topic = "", sort = "") {
+    // Show loader while fetching courses
     toggleLoader(true, ".section-result .section-inner");
+    // Clear the existing courses from the DOM
     $("#matchingCourses").empty();
+    // Construct the URL with search, topic, and sort parameters
     let url = `https://smileschool-api.hbtn.info/courses?q=${search}&topic=${topic}&sort=${sort}`;
 
+    // Fetch course data from the constructed URL
     $.get(url, function (data) {
+      // Iterate through each course in the data
       data.courses.forEach((course) => {
+        // Append each course element to the matchingCourses section
         appendCourseElement(
-          course.thumb_url,
-          course.title,
-          course.sub_title,
-          course.author_pic_url,
-          course.author,
-          course.star,
-          course.duration
+          course.thumb_url,          // URL of the course thumbnail
+          course.title,              // Title of the course
+          course.sub_title,          // Subtitle of the course
+          course.author_pic_url,     // URL of the author's picture
+          course.author,             // Author of the course
+          course.star,               // Star rating of the course
+          course.duration            // Duration of the course
         );
       });
 
+      // Update the count of displayed courses
       let courseCount = data.courses.length;
       $(".section-result p.courses-count").text(
         courseCount + (courseCount > 1 ? " videos" : " video")
       );
+
+      // Hide the loader once courses are fetched and displayed
       toggleLoader(false, ".section-result .section-inner");
     });
   }
