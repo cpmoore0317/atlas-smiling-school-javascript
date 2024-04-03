@@ -281,18 +281,26 @@ $(document).ready(function () {
 
   // Function to toggle the loader
   function toggleLoader(shouldShow, selector) {
+    // Toggle the visibility of the loader based on the value of shouldShow
     $(selector + " .loader").toggle(shouldShow);
   }
 
   // Function to handle the carousel slide
   function handleCarouselSlide(event, selector) {
+    // Get the current carousel item
     const currentItem = $(event.relatedTarget);
+    // Get the index of the current carousel item
     const idx = currentItem.index();
+    // Define the number of items per slide
     const itemsPerSlide = 4;
+    // Get the total number of items in the carousel
     const totalItems = $(selector + " .carousel-item").length;
 
+    // Check if the current item is at the end of the carousel
     if (idx >= totalItems - (itemsPerSlide - 1)) {
+      // Calculate the number of items to append based on the difference between total items and items per slide
       const itemsToAppend = itemsPerSlide - (totalItems - idx);
+      // Append items to the carousel based on the direction of slide
       for (let i = 0; i < itemsToAppend; i++) {
         if (event.direction == "left") {
           $(selector + " .carousel-item")
