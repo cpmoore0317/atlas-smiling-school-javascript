@@ -140,36 +140,43 @@ $(document).ready(function () {
 
   // Function to display the carousel videos
   function displayCarouselVideos(carouselSelector, apiURL, contentSelector) {
+    // Show loader while fetching videos
     toggleLoader(true, carouselSelector + " .carousel-inner");
+    // Fetch video data from API
     $.get(apiURL, function (data) {
+      // Iterate through each video in the data
       data.forEach((video, index) => {
+        // Append each video card element to the carousel
         appendCardElement(
-          video.author,
-          video.author_pic_url,
-          video.thumb_url,
-          video.star,
-          video.title,
-          video.sub_title,
-          video.duration,
-          index,
-          contentSelector
+          video.author,          // Author of the video
+          video.author_pic_url,  // URL of the author's picture
+          video.thumb_url,       // URL of the video thumbnail
+          video.star,            // Star rating of the video
+          video.title,           // Title of the video
+          video.sub_title,       // Subtitle of the video
+          video.duration,        // Duration of the video
+          index,                 // Index for setting active class for the first video
+          contentSelector        // Selector for the content area to append the video
         );
       });
+      // Check if there are less than 5 video in the carousel
       while ($(carouselSelector + " .carousel-item").length < 5) {
+        // Append videos repeatedly until there are 5 videos in the carousel
         data.forEach((video) => {
           appendCardElement(
-            video.author,
-            video.author_pic_url,
-            video.thumb_url,
-            video.star,
-            video.title,
-            video.sub_title,
-            video.duration,
-            -1,
-            contentSelector
+            video.author,          // Author of the video
+            video.author_pic_url,  // URL of the author's picture
+            video.thumb_url,       // URL of the video thumbnail
+            video.star,            // Star rating of the video
+            video.title,           // Title of the video
+            video.sub_title,       // Subtitle of the video
+            video.duration,        // Duration of the video
+            -1,                    // Negative index as it's not for setting active class
+            contentSelector        // Selector for the content area to append the video
           );
         });
       }
+      // Hide loader once videos are fetched and displayed
       toggleLoader(false, carouselSelector + " .carousel-inner");
     });
   }
