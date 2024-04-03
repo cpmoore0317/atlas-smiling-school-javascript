@@ -183,12 +183,16 @@ $(document).ready(function () {
 
   // Function to populate the search filters
   function populateSearchFilters() {
+    // Fetch course data from the API
     $.get("https://smileschool-api.hbtn.info/courses", function (data) {
+      // Set search input value to the fetched query
       $(".section-filters input").val(data.q);
+      // Initialize variables to store selected topic and sort
       let searchInput = $(".section-filters input").val();
       let selectedTopic = $("#topic button").attr("data-name");
       let selectedSort = $("#sortBy button").attr("data-name");
 
+      // Populate topics dropdown menu
       data.topics.forEach((topic) => {
         $("#topic .dropdown-menu").append(
           `<a class="dropdown-item f-medium px-4 py-2" data-name="${topic}" href="#">${formatText(
@@ -197,11 +201,13 @@ $(document).ready(function () {
         );
       });
 
+      // Update search input and display courses on search input change
       $(".section-filters input").change(function () {
         searchInput = $(this).val();
         displayCourses(searchInput, selectedTopic, selectedSort);
       });
 
+      // Update selected topic and display courses on topic selection
       $("#topic button").text(formatText(data.topics[0]));
       $("#topic .dropdown-menu a").click(function () {
         selectedTopic = $(this).attr("data-name");
@@ -209,6 +215,7 @@ $(document).ready(function () {
         displayCourses(searchInput, selectedTopic, selectedSort);
       });
 
+      // Populate sorts dropdown menu
       data.sorts.forEach((sort) => {
         $("#sortBy .dropdown-menu").append(
           `<a class="dropdown-item f-medium px-4 py-2" data-name="${sort}" href="#">${formatText(
@@ -217,6 +224,7 @@ $(document).ready(function () {
         );
       });
 
+      // Update selected sort and display courses on sort selection
       $("#sortBy button").text(formatText(data.sorts[0]));
       $("#sortBy .dropdown-menu a").click(function () {
         selectedSort = $(this).attr("data-name");
