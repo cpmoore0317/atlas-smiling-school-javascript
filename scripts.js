@@ -236,10 +236,11 @@ $(document).ready(function () {
 
   // Function to format the text
   function formatText(text) {
+    // Split the text by underscores and capitalize the first letter of each word
     return text
       .split("_")
       .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-      .join(" ");
+      .join(" "); // Join the words back together with spaces
   }
 
   // Function to display the courses
