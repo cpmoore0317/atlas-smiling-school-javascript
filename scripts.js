@@ -126,11 +126,11 @@ $(document).ready(function () {
       data.forEach((quote, index) => {
         // Append each quote element to the carousel
         appendQuoteElement(
-          quote.pic_url,   // URL of the person's picture
-          quote.name,      // Name of the person
-          quote.title,     // Title of the person
-          quote.text,      // Quote text
-          index            // Index used for setting active class for the first quote
+          quote.pic_url, // URL of the person's picture
+          quote.name, // Name of the person
+          quote.title, // Title of the person
+          quote.text, // Quote text
+          index // Index used for setting active class for the first quote
         );
       });
       // Hide loader once quotes are fetched and displayed
@@ -148,15 +148,15 @@ $(document).ready(function () {
       data.forEach((video, index) => {
         // Append each video card element to the carousel
         appendCardElement(
-          video.author,          // Author of the video
-          video.author_pic_url,  // URL of the author's picture
-          video.thumb_url,       // URL of the video thumbnail
-          video.star,            // Star rating of the video
-          video.title,           // Title of the video
-          video.sub_title,       // Subtitle of the video
-          video.duration,        // Duration of the video
-          index,                 // Index for setting active class for the first video
-          contentSelector        // Selector for the content area to append the video
+          video.author, // Author of the video
+          video.author_pic_url, // URL of the author's picture
+          video.thumb_url, // URL of the video thumbnail
+          video.star, // Star rating of the video
+          video.title, // Title of the video
+          video.sub_title, // Subtitle of the video
+          video.duration, // Duration of the video
+          index, // Index for setting active class for the first video
+          contentSelector // Selector for the content area to append the video
         );
       });
       // Check if there are less than 5 video in the carousel
@@ -164,15 +164,15 @@ $(document).ready(function () {
         // Append videos repeatedly until there are 5 videos in the carousel
         data.forEach((video) => {
           appendCardElement(
-            video.author,          // Author of the video
-            video.author_pic_url,  // URL of the author's picture
-            video.thumb_url,       // URL of the video thumbnail
-            video.star,            // Star rating of the video
-            video.title,           // Title of the video
-            video.sub_title,       // Subtitle of the video
-            video.duration,        // Duration of the video
-            -1,                    // Negative index as it's not for setting active class
-            contentSelector        // Selector for the content area to append the video
+            video.author, // Author of the video
+            video.author_pic_url, // URL of the author's picture
+            video.thumb_url, // URL of the video thumbnail
+            video.star, // Star rating of the video
+            video.title, // Title of the video
+            video.sub_title, // Subtitle of the video
+            video.duration, // Duration of the video
+            -1, // Negative index as it's not for setting active class
+            contentSelector // Selector for the content area to append the video
           );
         });
       }
@@ -258,13 +258,13 @@ $(document).ready(function () {
       data.courses.forEach((course) => {
         // Append each course element to the matchingCourses section
         appendCourseElement(
-          course.thumb_url,          // URL of the course thumbnail
-          course.title,              // Title of the course
-          course.sub_title,          // Subtitle of the course
-          course.author_pic_url,     // URL of the author's picture
-          course.author,             // Author of the course
-          course.star,               // Star rating of the course
-          course.duration            // Duration of the course
+          course.thumb_url, // URL of the course thumbnail
+          course.title, // Title of the course
+          course.sub_title, // Subtitle of the course
+          course.author_pic_url, // URL of the author's picture
+          course.author, // Author of the course
+          course.star, // Star rating of the course
+          course.duration // Duration of the course
         );
       });
 
